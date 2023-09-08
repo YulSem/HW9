@@ -24,35 +24,64 @@
 // M = 1; N = 15 -> 120
 // M = 4; N = 8. -> 30
 
+// System.Console.WriteLine("Введите число M");
+// int num = Convert.ToInt32(System.Console.ReadLine());
 
-System.Console.WriteLine("Введите число M");
-int num = Convert.ToInt32(System.Console.ReadLine());
+// System.Console.WriteLine("Введите число N");
+// int num2 = Convert.ToInt32(System.Console.ReadLine());
+// if (num < num2)
+// {
+//     Console.WriteLine(PrintNum(num,num2));
+// }
+// else
+// {
+//     System.Console.WriteLine(" Введите число N больше M");
+// }
 
-System.Console.WriteLine("Введите число N");
-int num2 = Convert.ToInt32(System.Console.ReadLine());
-if (num < num2)
-{
-    Console.WriteLine(PrintNum(num,num2));
-}
-else
-{
-    System.Console.WriteLine(" Введите число N больше M");
-}
+// string PrintNum(int start, int end)
+// {
+//     if (start == end)
+//     {
+//         return start.ToString();
+//     }
+//     return(start + " " + PrintNum(start+1, end));
+// }
+// int sum = SumNaturalNumbers(num, num2);
+// int SumNaturalNumbers(int num, int num2)
+//     {
+//         if (num > num2)
+//             return 0;
+//         else
+//             return num + SumNaturalNumbers(num + 1, num2);
+//     }
+// Console.WriteLine("Сумма чисел "+sum);
 
-string PrintNum(int start, int end)
-{
-    if (start == end)
+// Задача 68: Напишите программу вычисления функции Аккермана с помощью рекурсии. Даны два неотрицательных числа m и n.
+// m = 2, n = 3 -> A(m,n) = 9
+// m = 3, n = 2 -> A(m,n) = 29
+
+
+Console.WriteLine("Введите значение m>0:");
+int m = Convert.ToInt32(System.Console.ReadLine());
+  
+Console.WriteLine("Введите значение n>0:");
+int n = Convert.ToInt32(System.Console.ReadLine());
+ 
+int result = Ackermann(m, n);
+Console.WriteLine($"Результат функции Аккермана: {result}");
+    
+int Ackermann(int m, int n)
     {
-        return start.ToString();
-    }
-    return(start + " " + PrintNum(start+1, end));
-}
-int sum = SumNaturalNumbers(num, num2);
-int SumNaturalNumbers(int num, int num2)
-    {
-        if (num > num2)
-            return 0;
+        if (m == 0)
+        {
+            return n + 1;
+        }
+        else if (n == 0)
+        {
+            return Ackermann(m - 1, 1);
+        }
         else
-            return num + SumNaturalNumbers(num + 1, num2);
+        {
+            return Ackermann(m - 1, Ackermann(m, n - 1));
+        }
     }
-Console.WriteLine("Сумма чисел "+sum);
